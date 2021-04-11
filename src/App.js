@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Route, Switch } from 'react-router';
+import Contacts from './components/Contacts/Contacts';
+import NewContact from './components/NewContact/NewContact';
+import  {NavLink} from 'react-router-dom';
 
 function App() {
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <li>
+        <NavLink
+          exact to="/"
+          activeStyle={{
+            fontWeight: "bold",
+            color: "red"
+          }}>Contacts</NavLink>
+        <NavLink
+          exact to="/newcontact"
+          activeStyle={{
+            fontWeight: "bold",
+            color: "red"
+          }}>New Contact</NavLink>
+      </li>
+      <Switch>
+        <Route path="/" exact component={Contacts} />
+        <Route path="/newcontact" exact component={NewContact} />
+      </Switch>
+
     </div>
   );
 }
